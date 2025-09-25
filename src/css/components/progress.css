@@ -1,0 +1,298 @@
+/**
+ * 进度条组件样式
+ * 现代化的进度指示器和加载动画
+ */
+
+/* 进度条轨道 */
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background-color: var(--fill-secondary);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* 进度条填充 */
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg,
+    var(--system-blue) 0%,
+    var(--system-teal) 25%,
+    var(--system-green) 50%,
+    var(--system-orange) 75%,
+    var(--system-purple) 100%
+  );
+  border-radius: 4px;
+  transition: width var(--transition-base);
+  position: relative;
+  min-width: 0;
+}
+
+/* 进度条填充光泽效果 */
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  border-radius: 4px;
+}
+
+/* 加载状态的进度条 */
+.progress-fill.loading {
+  background: linear-gradient(90deg,
+    var(--system-blue) 0%,
+    var(--system-teal) 50%,
+    var(--system-blue) 100%
+  );
+  background-size: 200% 100%;
+  animation: progress-loading 2s ease-in-out infinite;
+}
+
+@keyframes progress-loading {
+  0% {
+    background-position: 200% 0;
+    width: 0%;
+  }
+  50% {
+    background-position: 0% 0;
+    width: 60%;
+  }
+  100% {
+    background-position: -200% 0;
+    width: 100%;
+  }
+}
+
+/* 错误状态的进度条 */
+.progress-fill.error {
+  background: var(--error);
+  animation: progress-error 0.5s ease-in-out;
+}
+
+@keyframes progress-error {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* 成功状态的进度条 */
+.progress-fill.success {
+  background: var(--success);
+}
+
+.progress-fill.success::before {
+  content: '✓';
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+/* 步骤进度指示器 */
+.step-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin: var(--spacing-md) 0;
+}
+
+.step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--fill-quaternary);
+  transition: all var(--transition-fast);
+}
+
+.step-dot.active {
+  background-color: var(--system-blue);
+  transform: scale(1.2);
+}
+
+.step-dot.completed {
+  background-color: var(--success);
+}
+
+/* 环形进度条 */
+.circular-progress {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circular-progress svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.circular-progress-track {
+  fill: none;
+  stroke: var(--fill-secondary);
+  stroke-width: 3;
+}
+
+.circular-progress-fill {
+  fill: none;
+  stroke: var(--system-blue);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 125.6; /* 2π × 20 (半径) */
+  stroke-dashoffset: 125.6;
+  transition: stroke-dashoffset var(--transition-base);
+}
+
+.circular-progress-text {
+  position: absolute;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--label-secondary);
+}
+
+/* 无限加载动画 */
+.infinite-progress {
+  width: 100%;
+  height: 4px;
+  background-color: var(--fill-secondary);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.infinite-progress::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--system-blue) 50%,
+    transparent 100%
+  );
+  border-radius: 2px;
+  animation: infinite-slide 1.5s ease-in-out infinite;
+}
+
+@keyframes infinite-slide {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* 脉冲加载动画 */
+.pulse-progress {
+  width: 100%;
+  height: 8px;
+  background-color: var(--fill-secondary);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pulse-progress::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    var(--system-blue) 0%,
+    var(--system-teal) 50%,
+    var(--system-blue) 100%
+  );
+  border-radius: 4px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scaleX(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 576px) {
+  .progress-track {
+    height: 6px;
+  }
+
+  .progress-fill {
+    border-radius: 3px;
+  }
+
+  .circular-progress {
+    width: 32px;
+    height: 32px;
+  }
+
+  .circular-progress-track,
+  .circular-progress-fill {
+    stroke-width: 2;
+  }
+
+  .circular-progress-fill {
+    stroke-dasharray: 100.48; /* 调整小尺寸的虚线数组 */
+    stroke-dashoffset: 100.48;
+  }
+}
+
+/* 高对比度模式适配 */
+@media (prefers-contrast: high) {
+  .progress-track {
+    box-shadow: inset 0 0 0 1px var(--label-quaternary);
+  }
+
+  .progress-fill {
+    background: var(--label-primary);
+  }
+
+  .progress-fill.loading {
+    background: var(--label-primary);
+  }
+}
+
+/* 减少动画首选项 */
+@media (prefers-reduced-motion: reduce) {
+  .progress-fill.loading {
+    animation: none;
+    background: var(--system-blue);
+  }
+
+  @keyframes progress-loading {
+    to { width: 100%; }
+  }
+
+  .infinite-progress::before {
+    animation: none;
+    left: 0;
+    background: var(--system-blue);
+  }
+
+  .pulse-progress::before {
+    animation: none;
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}

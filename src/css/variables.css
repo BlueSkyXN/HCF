@@ -1,0 +1,181 @@
+/**
+ * CSS自定义属性（变量）定义
+ * 基于iOS Human Interface Guidelines设计规范
+ */
+
+:root {
+  /* iOS 系统颜色 - 明亮模式 */
+  --system-blue: #007AFF;
+  --system-green: #34C759;
+  --system-orange: #FF9500;
+  --system-red: #FF3B30;
+  --system-yellow: #FFCC00;
+  --system-purple: #AF52DE;
+  --system-pink: #FF2D92;
+  --system-teal: #5AC8FA;
+  --system-indigo: #5856D6;
+  --system-brown: #A2845E;
+  --system-mint: #00C7BE;
+  --system-cyan: #32D74B;
+
+  /* 语义化颜色 - 明亮模式 */
+  --label-primary: #000000;
+  --label-secondary: #3C3C43;
+  --label-tertiary: rgba(60, 60, 67, 0.6);
+  --label-quaternary: rgba(60, 60, 67, 0.3);
+
+  --fill-primary: rgba(120, 120, 128, 0.08);
+  --fill-secondary: rgba(120, 120, 128, 0.16);
+  --fill-tertiary: rgba(118, 118, 128, 0.24);
+  --fill-quaternary: rgba(116, 116, 128, 0.32);
+
+  --background-primary: #FFFFFF;
+  --background-secondary: #F2F2F7;
+  --background-tertiary: #FFFFFF;
+
+  --grouped-background-primary: #F2F2F7;
+  --grouped-background-secondary: #FFFFFF;
+  --grouped-background-tertiary: #F2F2F7;
+
+  --separator: rgba(60, 60, 67, 0.29);
+  --opaque-separator: #C6C6C8;
+
+  /* 状态指示颜色 */
+  --success: var(--system-green);
+  --warning: var(--system-orange);
+  --error: var(--system-red);
+  --info: var(--system-blue);
+
+  /* 阴影 */
+  --shadow-small: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow-medium: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  --shadow-large: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
+  /* 圆角 */
+  --border-radius-small: 8px;
+  --border-radius-medium: 12px;
+  --border-radius-large: 16px;
+  --border-radius-xl: 20px;
+
+  /* 间距 */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+
+  /* 字体 */
+  --font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Courier New', monospace;
+
+  /* 字号 */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 30px;
+
+  /* 行高 */
+  --line-height-tight: 1.2;
+  --line-height-base: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* 字重 */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Z-index层级 */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+
+  /* 过渡动画 */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+
+  /* 断点 */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1400px;
+}
+
+/* 暗色模式适配 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* 系统颜色 - 暗色模式调整 */
+    --system-blue: #0A84FF;
+    --system-green: #30D158;
+    --system-orange: #FF9F0A;
+    --system-red: #FF453A;
+    --system-yellow: #FFD60A;
+    --system-purple: #BF5AF2;
+    --system-pink: #FF375F;
+    --system-teal: #64D2FF;
+    --system-indigo: #5E5CE6;
+    --system-brown: #AC8E68;
+    --system-mint: #63E6E2;
+    --system-cyan: #6AC4DC;
+
+    /* 语义化颜色 - 暗色模式 */
+    --label-primary: #FFFFFF;
+    --label-secondary: #EBEBF5;
+    --label-tertiary: rgba(235, 235, 245, 0.6);
+    --label-quaternary: rgba(235, 235, 245, 0.3);
+
+    --fill-primary: rgba(120, 120, 128, 0.36);
+    --fill-secondary: rgba(120, 120, 128, 0.32);
+    --fill-tertiary: rgba(118, 118, 128, 0.28);
+    --fill-quaternary: rgba(116, 116, 128, 0.24);
+
+    --background-primary: #000000;
+    --background-secondary: #1C1C1E;
+    --background-tertiary: #2C2C2E;
+
+    --grouped-background-primary: #000000;
+    --grouped-background-secondary: #1C1C1E;
+    --grouped-background-tertiary: #2C2C2E;
+
+    --separator: rgba(84, 84, 88, 0.65);
+    --opaque-separator: #38383A;
+
+    /* 阴影在暗色模式下调整 */
+    --shadow-small: 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.6);
+    --shadow-medium: 0 3px 6px rgba(0, 0, 0, 0.6), 0 3px 6px rgba(0, 0, 0, 0.7);
+    --shadow-large: 0 10px 20px rgba(0, 0, 0, 0.7), 0 6px 6px rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* 减少动画首选项用户的过渡效果 */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0s;
+    --transition-base: 0s;
+    --transition-slow: 0s;
+  }
+}
+
+/* 高对比度模式适配 */
+@media (prefers-contrast: high) {
+  :root {
+    --separator: rgba(60, 60, 67, 0.5);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --separator: rgba(84, 84, 88, 0.8);
+    }
+  }
+}

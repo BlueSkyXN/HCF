@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#007AFF">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <!-- SEO优化 -->
+  <title>HCF设备检测工具 - Hardware Capability Fingerprinting</title>
+  <meta name="description" content="先进的设备检测工具，通过多重信号分析准确识别用户的操作系统和设备特征。支持macOS、Windows、Linux、iOS、iPadOS、Android等平台检测。">
+  <meta name="keywords" content="设备检测,操作系统识别,浏览器指纹,WebGL检测,NFC检测,设备特征分析">
+  <meta name="author" content="HCF Team">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="HCF设备检测工具">
+  <meta property="og:description" content="先进的设备检测工具，通过多重信号分析准确识别设备特征">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="HCF Device Detector">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="HCF设备检测工具">
+  <meta name="twitter:description" content="先进的设备检测工具，通过多重信号分析准确识别设备特征">
+
+  <!-- 样式文件 -->
+  <link rel="stylesheet" href="./src/css/main.css">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <!-- 结构化数据 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "HCF设备检测工具",
+    "description": "先进的设备检测工具，通过多重信号分析准确识别用户的操作系统和设备特征",
+    "applicationCategory": "WebApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="nav-content" role="banner">
+    <h1 class="nav-title">设备检测</h1>
+  </nav>
+
+  <!-- 主内容区域 -->
+  <main class="content-grid" role="main">
+    <!-- 欢迎消息卡片 -->
+    <section class="info-card big-message-card" id="big-msg-card" aria-labelledby="welcome-title">
+      <div class="big-message-annot" id="welcome-subtitle">高精度识别</div>
+      <div class="big-message-text" id="welcome-title">设备特征分析</div>
+    </section>
+
+    <!-- 主要检测结果卡片 -->
+    <section class="info-card primary-card" aria-labelledby="summary-heading">
+      <header class="card-header">
+        <h2 class="card-title" id="summary-heading">检测结果</h2>
+      </header>
+
+      <div class="card-body">
+        <!-- 检测状态指示器 -->
+        <div id="summary" class="status-indicator" role="status" aria-live="polite" aria-describedby="confidence-bar">
+          <span class="status-text">正在初始化检测系统...</span>
+        </div>
+
+        <!-- 置信度进度条 -->
+        <div class="info-row">
+          <dt class="info-label">置信度</dt>
+          <dd style="flex: 1; margin-left: 16px;">
+            <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="confidence-bar">
+              <div id="confBar" class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </dd>
+        </div>
+
+        <!-- 评分面板 -->
+        <div class="info-row">
+          <dt class="info-label">操作系统评分</dt>
+          <dd id="scoreBoard" class="score-display" aria-label="各操作系统检测评分">
+            <div>
+              <div class="score-row">
+                <div class="score-label">检测中...</div>
+                <div class="score-bar">
+                  <span style="width: 0%"></span>
+                </div>
+                <div class="mono-text" style="width: 40px; text-align: right;">--</div>
+              </div>
+            </div>
+          </dd>
+        </div>
+      </div>
+    </section>
+
+    <!-- 检测步骤详情卡片 -->
+    <section class="info-card" aria-labelledby="steps-heading">
+      <header class="card-header">
+        <h2 class="card-title" id="steps-heading">检测步骤</h2>
+      </header>
+
+      <div class="card-body">
+        <p style="color: var(--label-secondary); font-size: var(--font-size-sm); margin: 0 0 var(--spacing-md) 0;">
+          以下显示了设备检测的详细步骤和分析结果：
+        </p>
+
+        <ul id="steps" role="list" aria-label="检测步骤列表">
+          <!-- 检测步骤将通过JavaScript动态插入 -->
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚信息 -->
+  <footer style="text-align: center; padding: var(--spacing-lg); color: var(--label-tertiary); font-size: var(--font-size-sm);">
+    <p style="margin: 0;">
+      HCF设备检测工具 v1.0.0 |
+      <a href="https://github.com/hcf-team/device-detector"
+         style="color: var(--system-blue); text-decoration: none;">
+        开源项目
+      </a> |
+      基于多重信号分析技术
+    </p>
+  </footer>
+
+  <!-- 主脚本文件 -->
+  <script type="module" src="./src/js/main.js"></script>
+
+  <!-- 无障碍辅助 -->
+  <div id="a11y-announcer" class="sr-only" aria-live="assertive" aria-atomic="true">
+    <!-- 用于屏幕阅读器公告 -->
+  </div>
+
+  <!-- 错误边界处理 -->
+  <script>
+    // 全局错误处理
+    window.addEventListener('error', function(event) {
+      console.error('全局错误:', event.error);
+
+      // 更新UI显示错误信息
+      const statusEl = document.getElementById('summary');
+      if (statusEl) {
+        statusEl.innerHTML = '<span class="status-text error">检测系统发生错误，请刷新页面重试</span>';
+      }
+    });
+
+    // Promise错误处理
+    window.addEventListener('unhandledrejection', function(event) {
+      console.error('未处理的Promise错误:', event.reason);
+      event.preventDefault();
+    });
+
+    // 兼容性检查
+    if (!window.Promise || !window.fetch) {
+      document.body.innerHTML = `
+        <div style="text-align: center; padding: 50px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+          <h1 style="color: #FF3B30;">浏览器不支持</h1>
+          <p>您的浏览器版本过旧，请升级到现代浏览器以使用本工具。</p>
+          <p>推荐使用：Chrome 60+、Firefox 55+、Safari 11+、Edge 79+</p>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>

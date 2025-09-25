@@ -1,0 +1,223 @@
+/**
+ * 卡片组件样式
+ * 基于iOS设计规范的卡片界面元素
+ */
+
+/* 基础信息卡片 */
+.info-card {
+  background-color: var(--grouped-background-secondary);
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--shadow-small);
+  margin-bottom: var(--spacing-md);
+  overflow: hidden;
+  transition: box-shadow var(--transition-base);
+}
+
+.info-card:hover {
+  box-shadow: var(--shadow-medium);
+}
+
+/* 主要信息卡片 */
+.primary-card {
+  border: 1px solid var(--separator);
+}
+
+/* 大消息卡片 */
+.big-message-card {
+  padding: var(--spacing-lg);
+  text-align: center;
+  background: linear-gradient(135deg, var(--system-blue) 0%, var(--system-purple) 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.big-message-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { transform: translate(-50%, -50%) rotate(0deg); opacity: 0; }
+  50% { transform: translate(-50%, -50%) rotate(180deg); opacity: 1; }
+}
+
+.big-message-annot {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  opacity: 0.8;
+  margin-bottom: var(--spacing-xs);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.big-message-text {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* 卡片头部 */
+.card-header {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--separator);
+  background-color: var(--background-secondary);
+}
+
+.card-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--label-primary);
+  margin: 0;
+  line-height: var(--line-height-tight);
+}
+
+/* 卡片主体 */
+.card-body {
+  padding: var(--spacing-lg);
+}
+
+/* 状态指示器 */
+.status-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-medium);
+  background-color: var(--fill-secondary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.status-text {
+  font-size: var(--font-size-base);
+  color: var(--label-primary);
+  text-align: center;
+}
+
+.status-text.error {
+  color: var(--error);
+}
+
+.status-text strong {
+  font-weight: var(--font-weight-semibold);
+  color: var(--system-blue);
+}
+
+/* 信息行 */
+.info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-sm) 0;
+}
+
+.info-row:last-child {
+  margin-bottom: 0;
+}
+
+.info-label {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--label-secondary);
+  margin: 0;
+}
+
+/* 分数显示区域 */
+.score-display {
+  margin: 0;
+  padding: var(--spacing-md);
+  background-color: var(--fill-primary);
+  border-radius: var(--border-radius-medium);
+}
+
+.score-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+  padding: var(--spacing-xs) 0;
+}
+
+.score-row:last-child {
+  margin-bottom: 0;
+}
+
+.score-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--label-secondary);
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.score-bar {
+  flex: 1;
+  height: 6px;
+  background-color: var(--fill-quaternary);
+  border-radius: 3px;
+  margin: 0 var(--spacing-sm);
+  overflow: hidden;
+}
+
+.score-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--system-blue) 0%, var(--system-purple) 100%);
+  border-radius: 3px;
+  transition: width var(--transition-base);
+  min-width: 2px;
+}
+
+.mono-text {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  color: var(--label-tertiary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* 响应式设计 */
+@media (max-width: 576px) {
+  .info-card {
+    margin-left: calc(-1 * var(--spacing-md));
+    margin-right: calc(-1 * var(--spacing-md));
+    border-radius: 0;
+  }
+
+  .card-header,
+  .card-body {
+    padding: var(--spacing-md);
+  }
+
+  .big-message-card {
+    padding: var(--spacing-md);
+  }
+
+  .big-message-text {
+    font-size: var(--font-size-xl);
+  }
+
+  .score-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-xs);
+  }
+
+  .score-label {
+    min-width: auto;
+  }
+
+  .score-bar {
+    margin: 0;
+  }
+
+  .mono-text {
+    text-align: right;
+  }
+}
